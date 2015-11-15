@@ -1,6 +1,6 @@
 library(jsonlite)
-train.data <- fromJSON("/Users/akhilsaokar2312/UCLA/Fall 15/MS Project/Data/train.json", flatten=T)
-test.data <- fromJSON("/Users/akhilsaokar2312/UCLA/Fall 15/MS Project/Data/test.json", flatten=T)
+train.data <- fromJSON("/Users/akhilsaokar2312/UCLA/Fall 15/MS Project/cuisine_classification/Data/train.json", flatten=T)
+test.data <- fromJSON("/Users/akhilsaokar2312/UCLA/Fall 15/MS Project/cuisine_classification/Data/test.json", flatten=T)
 combined.data.frame <- rbind(train.data[!names(train.data) %in% "cuisine"], test.data)
 
 library(ggplot2)
@@ -23,37 +23,34 @@ combined.ingredients <- tm_map(combined.ingredients, stemDocument)
 combined.ingredients.DTM <- DocumentTermMatrix(combined.ingredients)
 combined.ingredients.sparse.DTM <- removeSparseTerms(combined.ingredients.DTM, 0.99)
 combined.ingredients.sparse.DTM <- as.data.frame(as.matrix(combined.ingredients.sparse.DTM))
-## Add the dependent variable to the data.frame
-combined.ingredients.sparse.DTM$cuisine <- as.factor(train_data$cuisine)
 
+training.samples = dim(train.data)[1]
+training.ingredients.DTM = combined.ingredients.sparse.DTM[1:training.samples,]
+training.ingredients.DTM$cuisine = train.data$cuisine
 require(caret)
-inTrain <- createDataPartition(y = train_ingredientsDTM_sparse$cuisine, p = 0.7, list = FALSE)
-trainingDTM <- train_ingredientsDTM_sparse[inTrain,]
-validatingDTM <- train_ingredientsDTM_sparse[-inTrain,]
+partition.training.samples <- createDataPartition(training.ingredients.DTM$cuisine, p = 0.7, list = FALSE)
+training.subset.DTM <- training.ingredients.DTM[partition.training.samples,]
+validating.subset.DTM <- training.ingredients.DTM[-partition.training.samples,]
 
-test_ingredientsDTM <- DocumentTermMatrix(test_ingredients,list(dictionary = train_ingredientsDTM_sparse))
-# test_ingredientsDTM_sparse <- removeSparseTerms(test_ingredientsDTM, 0.99)
-# test_ingredientsDTM_sparse <- as.data.frame(as.matrix(test_ingredientsDTM_sparse))
-test_ingredientsDTM <- as.data.frame(as.matrix(test_ingredientsDTM))
-
+testing.samples = dim(test.data)[1]
+testing.ingredients.DTM = combined.ingredients.sparse.DTM[(training.samples+1):(training.samples+testing.samples),]
 ##### ------------------- Create CART Model -------------------- #######
 require(rpart)
-set.seed(1234)
-cartModelFit <- rpart(cuisine ~ ., data = trainingDTM, method = "class")
+cart.model.fit <- rpart(cuisine ~., data = training.ingredients.DTM, method = "class")
 ## Plot the tree
 require(rpart.plot)
-prp(cartModelFit)
+prp(cart.model.fit)
 
-cartPredict <- predict(cartModelFit, newdata = validatingDTM, type = "class")
-cartCM <- confusionMatrix(cartPredict, validatingDTM$cuisine)
+cart.model.predicted.cuisine <- predict(cart.model.fit, newdata = testing.ingredients.DTM, type = "class")
+# cart.confusion.matrix <- confusionMatrix(cart.model.predicted.cuisine, validating.subset.DTM$cuisine)
 require(MASS)
-cartPredictDataFrame <- as.data.frame(cbind(test_data$id,as.character(cartPredict)))
-colnames(cartPredictDataFrame) <- c("id", "cuisine")
-write.table(format(cartPredictDataFrame, scientific=FALSE), file = "/Users/akhilsaokar2312/UCLA/Fall 15/MS Project/Submissions/cart_submission.csv", sep=",",quote = F, row.names=F)
+cart.model.output.data <- as.data.frame(cbind(test.data$id,as.character(cart.model.predicted.cuisine)))
+colnames(cart.model.output.data) <- c("id", "cuisine")
+write.table(format(cart.model.output.data, scientific=FALSE), file = "/Users/akhilsaokar2312/UCLA/Fall 15/MS Project/Submissions/cart_submission.csv", sep=",",quote = F, row.names=F)
 
 ##### ------------- Create Random Forest Model --------------- #######
 require(randomForest)
-rf_fit<-randomForest(cuisine~.,data=trainingDTM,ntree=1000)
+rf_fit<-randomForest(cuisine~.,data=training.subset.DTM,ntree=1000)
 rf_predictions<-predict(rf_fit,newdata=validatingDTM)
 rf_CM <- confusionMatrix(rf_predictions, validatingDTM$cuisine)
 rf_DataFrame <- as.data.frame(cbind(test_data$id,as.character(rf_predictions)))
