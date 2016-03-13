@@ -1,0 +1,1318 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{What's Cooking}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \emph{What's Cooking?}
+
+\textbf{M.S. in C.S. Graduate Project Report}
+
+\emph{Akhil Saokar, Fall 2015}
+
+This project will use the kaggle dataset where recipe ingredients are
+used to categorize the cuisine of a dish.
+
+    \subsection{Part 1: Data Interest}\label{part-1-data-interest}
+
+    If you're in Northern California, you'll be walking past the inevitable
+bushels of leafy greens, spiked with dark purple kale and the bright
+pinks and yellows of chard. Across the world in South Korea, mounds of
+bright red kimchi greet you, while the smell of the sea draws your
+attention to squids squirming nearby. India's market is perhaps the most
+colorful, awash in the rich hues and aromas of dozens of spices:
+turmeric, star anise, poppy seeds, and garam masala as far as the eye
+can see.
+
+Some of the strongest geographic and cultural associations are tied to a
+region's local foods. This project deals with predicting the category of
+a dish's cuisine given a list of its ingredients. As seen in any
+document classification prediction algorithm, this `what's cooking?'
+project has been broken down to obtain a `bag-of-ingredients' model, on
+the lines of the `bag-of-words' model.
+
+This problem statement has many utilities like finding the most common
+ingredients in a dish generally as per cuisine, finding which possible
+restaurant to open nearby as per the local ingredients in that market,
+etc.
+
+    \subsection{Part 2: Data Acquisition and
+Pre-Processing}\label{part-2-data-acquisition-and-pre-processing}
+
+    \subsubsection{\texorpdfstring{(a) \emph{Reading in the training \& the
+testing data file and display as a Panda
+DataFrame}}{(a) Reading in the training \& the testing data file and display as a Panda DataFrame}}\label{a-reading-in-the-training-the-testing-data-file-and-display-as-a-panda-dataframe}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k+kn}{as} \PY{n+nn}{pd}
+        \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k+kn}{as} \PY{n+nn}{np}
+        
+        \PY{n}{training\PYZus{}load\PYZus{}data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}json}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{../Data/train.json}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{training\PYZus{}load\PYZus{}data}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}1}]:}        cuisine     id                                        ingredients
+        0        greek  10259  [romaine lettuce, black olives, grape tomatoes{\ldots}
+        1  southern\_us  25693  [plain flour, ground pepper, salt, tomatoes, g{\ldots}
+        2     filipino  20130  [eggs, pepper, salt, mayonaise, cooking oil, g{\ldots}
+        3       indian  22213                [water, vegetable oil, wheat, salt]
+        4       indian  13162  [black pepper, shallots, cornflour, cayenne pe{\ldots}
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{testing\PYZus{}load\PYZus{}data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}json}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{../Data/test.json}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{testing\PYZus{}load\PYZus{}data}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:}       id                                        ingredients
+        0  18009  [baking powder, eggs, all-purpose flour, raisi{\ldots}
+        1  28583  [sugar, egg yolks, corn starch, cream of tarta{\ldots}
+        2  41580  [sausage links, fennel bulb, fronds, olive oil{\ldots}
+        3  29752  [meat cuts, file powder, smoked sausage, okra,{\ldots}
+        4  35687  [ground black pepper, salt, sausage casings, l{\ldots}
+\end{Verbatim}
+        
+    \subsubsection{\texorpdfstring{(b) \emph{Cleaning the
+data}}{(b) Cleaning the data}}\label{b-cleaning-the-data}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k+kn}{import} \PY{n+nn}{nltk}
+        \PY{c}{\PYZsh{} The following packages needs to be imported in order to use the nltk library\PYZsq{}s functions }
+        \PY{n}{nltk}\PY{o}{.}\PY{n}{download}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{snowball\PYZus{}data}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{nltk}\PY{o}{.}\PY{n}{download}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{stopwords}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[nltk\_data] Downloading package snowball\_data to
+[nltk\_data]     /Users/akhilsaokar2312/nltk\_data{\ldots}
+[nltk\_data]   Package snowball\_data is already up-to-date!
+[nltk\_data] Downloading package stopwords to
+[nltk\_data]     /Users/akhilsaokar2312/nltk\_data{\ldots}
+[nltk\_data]   Package stopwords is already up-to-date!
+    \end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}3}]:} True
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{k+kn}{import} \PY{n+nn}{re}
+        \PY{k+kn}{import} \PY{n+nn}{string}
+        \PY{k}{def} \PY{n+nf}{removePunctuation}\PY{p}{(}\PY{n}{text}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Removes anything betwwen brackets (generally for liquid ingredients), punctuation, }
+        \PY{l+s+sd}{       changes to lower case, and strips leading and trailing spaces.}
+        \PY{l+s+sd}{    Args:}
+        \PY{l+s+sd}{        text (str): A string.}
+        \PY{l+s+sd}{    Returns:}
+        \PY{l+s+sd}{        str: The cleaned up string.}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{n}{no\PYZus{}bracket\PYZus{}string} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{sub}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{([\PYZca{})]*}\PY{l+s}{\PYZbs{}}\PY{l+s}{)}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{text}\PY{p}{)}
+            \PY{k}{return} \PY{n}{re}\PY{o}{.}\PY{n}{sub}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{[\PYZca{}A\PYZhy{}z}\PY{l+s}{\PYZbs{}}\PY{l+s}{s]}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{n}{no\PYZus{}bracket\PYZus{}string}\PY{p}{)}\PY{o}{.}\PY{n}{lower}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{strip}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{k+kn}{import} \PY{n+nn}{nltk}
+        \PY{k+kn}{from} \PY{n+nn}{nltk.stem} \PY{k+kn}{import} \PY{n}{SnowballStemmer}
+        \PY{k}{def} \PY{n+nf}{stemWords}\PY{p}{(}\PY{n}{text}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Stems the ingredient provided in the function}
+        \PY{l+s+sd}{    Args:}
+        \PY{l+s+sd}{        text (str): A list element.}
+        \PY{l+s+sd}{    Returns:}
+        \PY{l+s+sd}{        str: The stemmed ingredient.}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{n}{recipe} \PY{o}{=} \PY{p}{[}\PY{n}{SnowballStemmer}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{english}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{stem}\PY{p}{(}\PY{n}{word}\PY{p}{)} \PY{k}{for} \PY{n}{word} \PY{o+ow}{in} \PY{n}{text}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{]}
+            \PY{k}{return} \PY{n}{recipe}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k+kn}{from} \PY{n+nn}{nltk.corpus} \PY{k+kn}{import} \PY{n}{stopwords} \PY{c}{\PYZsh{} Import the stop word list}
+        
+        \PY{k}{def} \PY{n+nf}{removeStopWords}\PY{p}{(}\PY{n}{text}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Removes the stop words in the recipe provided in the function}
+        \PY{l+s+sd}{    Args:}
+        \PY{l+s+sd}{        text (str): A list element (ingredients in the recipe).}
+        \PY{l+s+sd}{    Returns:}
+        \PY{l+s+sd}{        str: The remaining string.}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{k}{return} \PY{p}{[}\PY{n}{word} \PY{k}{for} \PY{n}{word} \PY{o+ow}{in} \PY{n}{text}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{ }\PY{l+s}{\PYZdq{}}\PY{p}{)} \PY{k}{if} \PY{o+ow}{not} \PY{n}{word} \PY{o+ow}{in} \PY{n}{stopwords}\PY{o}{.}\PY{n}{words}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{english}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{]}
+\end{Verbatim}
+
+    \subsubsection{\texorpdfstring{(c) \emph{Find the Cuisine counts in the
+training
+data}}{(c) Find the Cuisine counts in the training data}}\label{c-find-the-cuisine-counts-in-the-training-data}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{k+kn}{from} \PY{n+nn}{collections} \PY{k+kn}{import} \PY{n}{Counter}
+        
+        \PY{c}{\PYZsh{} The following line of code removes the unicode ascii character from the JSON object}
+        \PY{n}{flattened\PYZus{}cuisines} \PY{o}{=} \PY{p}{[}\PY{n}{cuisine\PYZus{}string}\PY{o}{.}\PY{n}{encode}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{utf\PYZhy{}8}\PY{l+s}{\PYZsq{}}\PY{p}{)} \PY{k}{for} \PY{n}{cuisine\PYZus{}string} \PY{o+ow}{in} \PY{n}{training\PYZus{}load\PYZus{}data}\PY{o}{.}\PY{n}{cuisine}\PY{p}{]}
+        \PY{c}{\PYZsh{} The following line of code gets a list of the counts of each cuisine in the training data}
+        \PY{n}{all\PYZus{}cuisines\PYZus{}count} \PY{o}{=} \PY{n}{Counter}\PY{p}{(}\PY{n}{flattened\PYZus{}cuisines}\PY{p}{)}\PY{o}{.}\PY{n}{most\PYZus{}common}\PY{p}{(}\PY{p}{)}
+        \PY{k}{print} \PY{n}{all\PYZus{}cuisines\PYZus{}count}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[('italian', 7838), ('mexican', 6438), ('southern\_us', 4320), ('indian', 3003), ('chinese', 2673), ('french', 2646), ('cajun\_creole', 1546), ('thai', 1539), ('japanese', 1423), ('greek', 1175), ('spanish', 989), ('korean', 830), ('vietnamese', 825), ('moroccan', 821), ('british', 804), ('filipino', 755), ('irish', 667), ('jamaican', 526), ('russian', 489), ('brazilian', 467)]
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c}{\PYZsh{} To plot the cuisine counts obtained, we use a barplot}
+        \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline  
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib.pyplot} \PY{k+kn}{as} \PY{n+nn}{plt}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{style}\PY{o}{.}\PY{n}{use}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{ggplot}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{all\PYZus{}cuisines\PYZus{}dataframe} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{all\PYZus{}cuisines\PYZus{}count}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{Cuisine}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{Count}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+        \PY{n}{cuisine\PYZus{}count\PYZus{}plot} \PY{o}{=} \PY{n}{all\PYZus{}cuisines\PYZus{}dataframe}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{n}{ascending}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{,} \PY{n}{inplace}\PY{o}{=}\PY{n+nb+bp}{False}\PY{p}{)}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{kind}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{barh}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{title} \PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{Cuisine Counts}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{14}\PY{p}{)}
+        \PY{n}{cuisine\PYZus{}count\PYZus{}plot}\PY{o}{.}\PY{n}{set\PYZus{}yticklabels}\PY{p}{(}\PY{n}{all\PYZus{}cuisines\PYZus{}dataframe}\PY{o}{.}\PY{n}{Cuisine}\PY{p}{)}
+        \PY{n}{cuisine\PYZus{}count\PYZus{}plot}\PY{o}{.}\PY{n}{invert\PYZus{}yaxis}\PY{p}{(}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{What's Cooking_files/What's Cooking_14_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \paragraph{\texorpdfstring{Hence, we can see that \emph{`Italian'},
+\emph{`Mexican'}, \emph{`Southern US'}, \emph{`Indian'},
+\emph{`Chinese'} and \emph{`French'} cuisines are among the more popular
+cuisines.}{Hence, we can see that Italian, Mexican, Southern US, Indian, Chinese and French cuisines are among the more popular cuisines.}}\label{hence-we-can-see-that-italian-mexican-southern-us-indian-chinese-and-french-cuisines-are-among-the-more-popular-cuisines.}
+
+    \subsubsection{\texorpdfstring{(d) \emph{Finding the set of ingredients
+used in all recipies, per
+cuisine}}{(d) Finding the set of ingredients used in all recipies, per cuisine}}\label{d-finding-the-set-of-ingredients-used-in-all-recipies-per-cuisine}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{training\PYZus{}cuisine\PYZus{}ingredient\PYZus{}corpus} \PY{o}{=} \PY{n}{training\PYZus{}load\PYZus{}data}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{cuisine}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{ingredients}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}
+        
+        \PY{k}{for} \PY{n}{k}\PY{p}{,}\PY{n}{v} \PY{o+ow}{in} \PY{n}{training\PYZus{}cuisine\PYZus{}ingredient\PYZus{}corpus}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{cuisine}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{iteritems}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{n}{training\PYZus{}cuisine\PYZus{}ingredient\PYZus{}corpus}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{ingredients}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{n}{k}\PY{p}{]} \PY{o}{=} \PY{n+nb}{map}\PY{p}{(}\PY{n}{removePunctuation}\PY{p}{,}\PY{n}{training\PYZus{}cuisine\PYZus{}ingredient\PYZus{}corpus}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{ingredients}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{n}{k}\PY{p}{]}\PY{p}{)}
+            \PY{n}{training\PYZus{}cuisine\PYZus{}ingredient\PYZus{}corpus}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{ingredients}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{n}{k}\PY{p}{]} \PY{o}{=} \PY{n+nb}{map}\PY{p}{(}\PY{n}{stemWords}\PY{p}{,}\PY{n}{training\PYZus{}cuisine\PYZus{}ingredient\PYZus{}corpus}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{ingredients}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{n}{k}\PY{p}{]}\PY{p}{)}
+            \PY{n}{training\PYZus{}cuisine\PYZus{}ingredient\PYZus{}corpus}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{ingredients}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{n}{k}\PY{p}{]} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{ }\PY{l+s}{\PYZsq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{innerListElement}\PY{p}{)} \PY{k}{for} \PY{n}{innerListElement} \PY{o+ow}{in} \PY{n}{training\PYZus{}cuisine\PYZus{}ingredient\PYZus{}corpus}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{ingredients}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{n}{k}\PY{p}{]}\PY{p}{)}
+            \PY{n}{training\PYZus{}cuisine\PYZus{}ingredient\PYZus{}corpus}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{ingredients}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{n}{k}\PY{p}{]} \PY{o}{=} \PY{n+nb}{map}\PY{p}{(}\PY{n}{removeStopWords}\PY{p}{,}\PY{n}{training\PYZus{}cuisine\PYZus{}ingredient\PYZus{}corpus}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{ingredients}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{n}{k}\PY{p}{]}\PY{p}{)}
+            \PY{n}{training\PYZus{}cuisine\PYZus{}ingredient\PYZus{}corpus}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{ingredients}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{n}{k}\PY{p}{]} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{ }\PY{l+s}{\PYZsq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{innerListElement}\PY{p}{)} \PY{k}{for} \PY{n}{innerListElement} \PY{o+ow}{in} \PY{n}{training\PYZus{}cuisine\PYZus{}ingredient\PYZus{}corpus}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{ingredients}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{n}{k}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+    \subsubsection{\texorpdfstring{(e) \emph{Finding the most common
+ingredients used among all the
+recipies}}{(e) Finding the most common ingredients used among all the recipies}}\label{e-finding-the-most-common-ingredients-used-among-all-the-recipies}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{c}{\PYZsh{} Plot Ingredient Distribution of the training data set}
+         \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+         \PY{k+kn}{from} \PY{n+nn}{collections} \PY{k+kn}{import} \PY{n}{Counter}
+         \PY{k+kn}{import} \PY{n+nn}{matplotlib.pyplot} \PY{k+kn}{as} \PY{n+nn}{plt}
+         
+         \PY{n}{plt}\PY{o}{.}\PY{n}{style}\PY{o}{.}\PY{n}{use}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{ggplot}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{training\PYZus{}cuisine\PYZus{}all\PYZus{}ingredients} \PY{o}{=} \PY{p}{[}\PY{n}{Counter}\PY{p}{(}\PY{n}{recipe}\PY{p}{)} \PY{k}{for} \PY{n}{recipe} \PY{o+ow}{in} \PY{n}{training\PYZus{}cuisine\PYZus{}ingredient\PYZus{}corpus}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{ingredients}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
+         \PY{n}{training\PYZus{}cuisine\PYZus{}ingredient\PYZus{}distribution} \PY{o}{=} \PY{n+nb}{sum}\PY{p}{(}\PY{n}{training\PYZus{}cuisine\PYZus{}all\PYZus{}ingredients}\PY{p}{,} \PY{n}{Counter}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ingredient\PYZus{}fig} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{training\PYZus{}cuisine\PYZus{}ingredient\PYZus{}distribution}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{transpose}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{n}{ascending}\PY{o}{=}\PY{n+nb+bp}{False}\PY{p}{,} \PY{n}{inplace}\PY{o}{=}\PY{n+nb+bp}{False}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{20}\PY{p}{]}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{kind}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{barh}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{title} \PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{20 Most Commonly Used Ingredients}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{14}\PY{p}{)}
+         \PY{n}{ingredient\PYZus{}fig}\PY{o}{.}\PY{n}{invert\PYZus{}yaxis}\PY{p}{(}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{What's Cooking_files/What's Cooking_19_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \paragraph{\texorpdfstring{Hence, we can see here that the most common
+ingredient used in the recipies is \emph{`Salt'}, which is a must in
+most of the recipies as we
+know.}{Hence, we can see here that the most common ingredient used in the recipies is Salt, which is a must in most of the recipies as we know.}}\label{hence-we-can-see-here-that-the-most-common-ingredient-used-in-the-recipies-is-salt-which-is-a-must-in-most-of-the-recipies-as-we-know.}
+
+\paragraph{\texorpdfstring{\emph{Using the result obtained in
+}(d)\emph{, a plot of the common ingredients per each cuisine is
+obtained as seen
+below:}}{Using the result obtained in (d), a plot of the common ingredients per each cuisine is obtained as seen below:}}\label{using-the-result-obtained-in-d-a-plot-of-the-common-ingredients-per-each-cuisine-is-obtained-as-seen-below}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{k+kn}{import} \PY{n+nn}{matplotlib.pyplot} \PY{k+kn}{as} \PY{n+nn}{plt}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{style}\PY{o}{.}\PY{n}{use}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{ggplot}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{fig}\PY{p}{,} \PY{n}{axes} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{n}{nrows}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{,} \PY{n}{ncols}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{25}\PY{p}{,}\PY{l+m+mi}{70}\PY{p}{)}\PY{p}{)}
+         \PY{k}{for} \PY{n}{cuisine\PYZus{}count}\PY{p}{,} \PY{n}{ingredient\PYZus{}list} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{training\PYZus{}cuisine\PYZus{}all\PYZus{}ingredients}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+             \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{ingredient\PYZus{}list}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{transpose}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{n}{ascending}\PY{o}{=}\PY{n+nb+bp}{False}\PY{p}{,} \PY{n}{inplace}\PY{o}{=}\PY{n+nb+bp}{False}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{20}\PY{p}{]}\PYZbs{}
+                              \PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{subplots}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{,} \PY{n}{sharex}\PY{o}{=}\PY{n+nb+bp}{False}\PY{p}{,} \PY{n}{sharey}\PY{o}{=}\PY{n+nb+bp}{False}\PY{p}{,} \PY{n}{kind}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{barh}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{n}{ax}\PY{o}{=}\PY{n}{axes}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{cuisine\PYZus{}count}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{n+nb}{int}\PY{p}{(}\PY{n}{cuisine\PYZus{}count}\PY{o}{\PYZpc{}}\PY{k}{2})], fontsize=20)    
+             \PY{n}{axes}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{cuisine\PYZus{}count}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{n+nb}{int}\PY{p}{(}\PY{n}{cuisine\PYZus{}count}\PY{o}{\PYZpc{}}\PY{k}{2})].invert\PYZus{}yaxis()
+             \PY{n}{axes}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{cuisine\PYZus{}count}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{n+nb}{int}\PY{p}{(}\PY{n}{cuisine\PYZus{}count}\PY{o}{\PYZpc{}}\PY{k}{2})].set\PYZus{}title(training\PYZus{}cuisine\PYZus{}ingredient\PYZus{}corpus[\PYZsq{}cuisine\PYZsq{}][cuisine\PYZus{}count])
+         \PY{n}{fig}\PY{o}{.}\PY{n}{tight\PYZus{}layout}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{What's Cooking_files/What's Cooking_21_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \paragraph{1) Here, we see that the most common ingredient in most of
+the cuisines is
+salt.}\label{here-we-see-that-the-most-common-ingredient-in-most-of-the-cuisines-is-salt.}
+
+\paragraph{\texorpdfstring{2) However, in \emph{`Thai'} \&
+\emph{`Vietnamese'}, the most common ingredient is \emph{`Fish
+Sauce'}.}{2) However, in Thai \& Vietnamese, the most common ingredient is Fish Sauce.}}\label{however-in-thai-vietnamese-the-most-common-ingredient-is-fish-sauce.}
+
+\paragraph{\texorpdfstring{3) Also, in \emph{`Korean'}, \emph{`Chinese'}
+and \emph{`Japanese'} dishes, \emph{`Soy Sauce'} is the most commmon
+ingredient.}{3) Also, in Korean, Chinese and Japanese dishes, Soy Sauce is the most commmon ingredient.}}\label{also-in-korean-chinese-and-japanese-dishes-soy-sauce-is-the-most-commmon-ingredient.}
+
+\paragraph{\texorpdfstring{4) \emph{`All Purpose Flour'} is a very
+commmon ingredient in most European cuisines like \emph{`British'},
+\emph{`French'}, \emph{`Irish'}, along with \emph{`Russian'} and
+\emph{`Southern US'}
+cuisines.}{4) All Purpose Flour is a very commmon ingredient in most European cuisines like British, French, Irish, along with Russian and Southern US cuisines.}}\label{all-purpose-flour-is-a-very-commmon-ingredient-in-most-european-cuisines-like-british-french-irish-along-with-russian-and-southern-us-cuisines.}
+
+\paragraph{\texorpdfstring{5) \emph{`Garam Masala'} is one of the most
+distinguishing ingredients used in \emph{`Indian'}
+recipies.}{5) Garam Masala is one of the most distinguishing ingredients used in Indian recipies.}}\label{garam-masala-is-one-of-the-most-distinguishing-ingredients-used-in-indian-recipies.}
+
+\paragraph{\texorpdfstring{6) \emph{`Mirin'} is one of the most
+distinguishing ingredients used in \emph{`Japanese'}
+recipies.}{6) Mirin is one of the most distinguishing ingredients used in Japanese recipies.}}\label{mirin-is-one-of-the-most-distinguishing-ingredients-used-in-japanese-recipies.}
+
+\paragraph{\texorpdfstring{7) \emph{`Cheese'} is among the top in the
+most commonly used ingredient in \emph{`Italian'} dishes, as seen in the
+grated cheese in Pastas, Pizzas and a whole range of Italian
+dishes..}{7) Cheese is among the top in the most commonly used ingredient in Italian dishes, as seen in the grated cheese in Pastas, Pizzas and a whole range of Italian dishes..}}\label{cheese-is-among-the-top-in-the-most-commonly-used-ingredient-in-italian-dishes-as-seen-in-the-grated-cheese-in-pastas-pizzas-and-a-whole-range-of-italian-dishes..}
+
+\paragraph{\texorpdfstring{8) \emph{`Southern US'} cuisines have Flour,
+Eggs, Baking powder, Sugar, Butter as their most common ingredients.
+These ingredients actually typify the type of food in this cuisine
+(mixture of sweet and savory baking
+dishes).}{8) Southern US cuisines have Flour, Eggs, Baking powder, Sugar, Butter as their most common ingredients. These ingredients actually typify the type of food in this cuisine (mixture of sweet and savory baking dishes).}}\label{southern-us-cuisines-have-flour-eggs-baking-powder-sugar-butter-as-their-most-common-ingredients.-these-ingredients-actually-typify-the-type-of-food-in-this-cuisine-mixture-of-sweet-and-savory-baking-dishes.}
+
+    \subsubsection{\texorpdfstring{(f) \emph{Creating the Bag-of-Ingredients
+Model}}{(f) Creating the Bag-of-Ingredients Model}}\label{f-creating-the-bag-of-ingredients-model}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{time}
+         training\PYZus{}ingredients\PYZus{}features = pd.DataFrame(training\PYZus{}load\PYZus{}data, columns=[\PYZsq{}cuisine\PYZsq{}, \PYZsq{}ingredients\PYZsq{}])
+         
+         for recipe\PYZus{}id in range(0,len(training\PYZus{}ingredients\PYZus{}features)):
+             training\PYZus{}ingredients\PYZus{}features[\PYZsq{}ingredients\PYZsq{}].loc[recipe\PYZus{}id] = map(removePunctuation,training\PYZus{}ingredients\PYZus{}features[\PYZsq{}ingredients\PYZsq{}].loc[recipe\PYZus{}id])
+             training\PYZus{}ingredients\PYZus{}features[\PYZsq{}ingredients\PYZsq{}].loc[recipe\PYZus{}id] = map(stemWords,training\PYZus{}ingredients\PYZus{}features[\PYZsq{}ingredients\PYZsq{}].loc[recipe\PYZus{}id])
+             training\PYZus{}ingredients\PYZus{}features[\PYZsq{}ingredients\PYZsq{}].loc[recipe\PYZus{}id] = list(\PYZsq{} \PYZsq{}.join(innerListElement) for innerListElement in training\PYZus{}ingredients\PYZus{}features[\PYZsq{}ingredients\PYZsq{}].loc[recipe\PYZus{}id])
+             training\PYZus{}ingredients\PYZus{}features[\PYZsq{}ingredients\PYZsq{}].loc[recipe\PYZus{}id] = map(removeStopWords,training\PYZus{}ingredients\PYZus{}features[\PYZsq{}ingredients\PYZsq{}].loc[recipe\PYZus{}id])
+             training\PYZus{}ingredients\PYZus{}features[\PYZsq{}ingredients\PYZsq{}].loc[recipe\PYZus{}id] = list(\PYZsq{} \PYZsq{}.join(innerListElement) for innerListElement in training\PYZus{}ingredients\PYZus{}features[\PYZsq{}ingredients\PYZsq{}].loc[recipe\PYZus{}id])
+         training\PYZus{}ingredients\PYZus{}features[\PYZsq{}ingredients\PYZsq{}] = [\PYZsq{} \PYZsq{}.join(item) for item in training\PYZus{}ingredients\PYZus{}features[\PYZsq{}ingredients\PYZsq{}]]
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+CPU times: user 4min 56s, sys: 30.2 s, total: 5min 26s
+Wall time: 5min 43s
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{time}
+         testing\PYZus{}ingredients\PYZus{}features = pd.DataFrame(testing\PYZus{}load\PYZus{}data, columns=[\PYZsq{}ingredients\PYZsq{}])
+         for loop\PYZus{}id in range(0,len(testing\PYZus{}ingredients\PYZus{}features)):
+             testing\PYZus{}ingredients\PYZus{}features[\PYZsq{}ingredients\PYZsq{}].loc[loop\PYZus{}id] = map(removePunctuation,testing\PYZus{}ingredients\PYZus{}features[\PYZsq{}ingredients\PYZsq{}].loc[loop\PYZus{}id])
+             testing\PYZus{}ingredients\PYZus{}features[\PYZsq{}ingredients\PYZsq{}].loc[loop\PYZus{}id] = map(stemWords,testing\PYZus{}ingredients\PYZus{}features[\PYZsq{}ingredients\PYZsq{}].loc[loop\PYZus{}id])
+             testing\PYZus{}ingredients\PYZus{}features[\PYZsq{}ingredients\PYZsq{}].loc[loop\PYZus{}id] = list(\PYZsq{} \PYZsq{}.join(innerListElement) for innerListElement in testing\PYZus{}ingredients\PYZus{}features[\PYZsq{}ingredients\PYZsq{}].loc[loop\PYZus{}id])
+             testing\PYZus{}ingredients\PYZus{}features[\PYZsq{}ingredients\PYZsq{}].loc[loop\PYZus{}id] = map(removeStopWords,testing\PYZus{}ingredients\PYZus{}features[\PYZsq{}ingredients\PYZsq{}].loc[loop\PYZus{}id])
+             testing\PYZus{}ingredients\PYZus{}features[\PYZsq{}ingredients\PYZsq{}].loc[loop\PYZus{}id] = list(\PYZsq{} \PYZsq{}.join(innerListElement) for innerListElement in testing\PYZus{}ingredients\PYZus{}features[\PYZsq{}ingredients\PYZsq{}].loc[loop\PYZus{}id])
+         testing\PYZus{}ingredients\PYZus{}features[\PYZsq{}ingredients\PYZsq{}] = [\PYZsq{} \PYZsq{}.join(item) for item in testing\PYZus{}ingredients\PYZus{}features[\PYZsq{}ingredients\PYZsq{}]]        
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+CPU times: user 50.3 s, sys: 7.93 s, total: 58.2 s
+Wall time: 1min 2s
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{n}{training\PYZus{}ingredients\PYZus{}features} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{training\PYZus{}load\PYZus{}data}\PY{o}{.}\PY{n}{id}\PY{p}{)}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{training\PYZus{}ingredients\PYZus{}features}\PY{p}{)}
+         \PY{n}{testing\PYZus{}ingredients\PYZus{}features} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{testing\PYZus{}load\PYZus{}data}\PY{o}{.}\PY{n}{id}\PY{p}{)}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{testing\PYZus{}ingredients\PYZus{}features}\PY{p}{)}
+         \PY{n}{combined\PYZus{}ingredients\PYZus{}features} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{concat}\PY{p}{(}\PY{p}{[}\PY{n}{training\PYZus{}ingredients\PYZus{}features}\PY{p}{,} \PY{n}{testing\PYZus{}ingredients\PYZus{}features}\PY{p}{]}\PY{p}{,}\PY{n}{join}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{inner}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{n}{ignore\PYZus{}index}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Creating the bag of ingredients...}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{\PYZdq{}}
+         \PY{k+kn}{from} \PY{n+nn}{sklearn.feature\PYZus{}extraction.text} \PY{k+kn}{import} \PY{n}{CountVectorizer}
+         
+         \PY{c}{\PYZsh{} Initialize the \PYZdq{}CountVectorizer\PYZdq{} object, which is scikit\PYZhy{}learn\PYZsq{}s bag of ingredients tool.  }
+         \PY{n}{document\PYZus{}matrix} \PY{o}{=} \PY{n}{CountVectorizer}\PY{p}{(}\PY{n}{analyzer} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{word}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{max\PYZus{}features} \PY{o}{=} \PY{l+m+mi}{300}\PY{p}{)} 
+         
+         \PY{c}{\PYZsh{} fit\PYZus{}transform() does two functions: }
+         \PY{c}{\PYZsh{} First, it fits the model and learns the ingredient vocabulary. }
+         \PY{c}{\PYZsh{} Second, it transforms our training data into feature vectors. }
+         
+         \PY{c}{\PYZsh{} Sparse Ingredient Matrix}
+         \PY{n}{combined\PYZus{}ingredients\PYZus{}DTM} \PY{o}{=} \PY{n}{document\PYZus{}matrix}\PY{o}{.}\PY{n}{fit\PYZus{}transform}\PY{p}{(}\PY{n}{combined\PYZus{}ingredients\PYZus{}features}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{ingredients}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+         \PY{c}{\PYZsh{} Dense Ingredient Matrix}
+         \PY{n}{combined\PYZus{}ingredients\PYZus{}DTM\PYZus{}array} \PY{o}{=} \PY{n}{combined\PYZus{}ingredients\PYZus{}DTM}\PY{o}{.}\PY{n}{toarray}\PY{p}{(}\PY{p}{)}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{The bag of ingredients has been created!}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{\PYZdq{}}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Creating the bag of ingredients{\ldots}
+
+The bag of ingredients has been created!
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{training\PYZus{}ingredients\PYZus{}DTM} \PY{o}{=} \PY{n}{combined\PYZus{}ingredients\PYZus{}DTM}\PY{p}{[}\PY{p}{:}\PY{n+nb}{len}\PY{p}{(}\PY{n}{training\PYZus{}ingredients\PYZus{}features}\PY{p}{)}\PY{p}{,}\PY{p}{]}
+         \PY{n}{training\PYZus{}ingredients\PYZus{}DTM\PYZus{}array} \PY{o}{=} \PY{n}{combined\PYZus{}ingredients\PYZus{}DTM\PYZus{}array}\PY{p}{[}\PY{p}{:}\PY{n+nb}{len}\PY{p}{(}\PY{n}{training\PYZus{}ingredients\PYZus{}features}\PY{p}{)}\PY{p}{,}\PY{p}{]}
+         \PY{n}{testing\PYZus{}ingredients\PYZus{}DTM} \PY{o}{=} \PY{n}{combined\PYZus{}ingredients\PYZus{}DTM}\PY{p}{[}\PY{n+nb}{len}\PY{p}{(}\PY{n}{training\PYZus{}ingredients\PYZus{}features}\PY{p}{)}\PY{p}{:}\PY{p}{]}
+         \PY{n}{testing\PYZus{}ingredients\PYZus{}DTM\PYZus{}array} \PY{o}{=} \PY{n}{combined\PYZus{}ingredients\PYZus{}DTM\PYZus{}array}\PY{p}{[}\PY{n+nb}{len}\PY{p}{(}\PY{n}{training\PYZus{}ingredients\PYZus{}features}\PY{p}{)}\PY{p}{:}\PY{p}{]}
+\end{Verbatim}
+
+    \subsection{Part 3: Applied Predictive Modeling in
+Python}\label{part-3-applied-predictive-modeling-in-python}
+
+    \subsubsection{\texorpdfstring{(a) \emph{Creating a Multinomial Naive
+Bayes
+Model}}{(a) Creating a Multinomial Naive Bayes Model}}\label{a-creating-a-multinomial-naive-bayes-model}
+
+\paragraph{\texorpdfstring{\emph{Run Cross
+Validation}}{Run Cross Validation}}\label{run-cross-validation}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn.naive\PYZus{}bayes} \PY{k+kn}{import} \PY{n}{MultinomialNB}
+         \PY{k+kn}{from} \PY{n+nn}{sklearn.grid\PYZus{}search} \PY{k+kn}{import} \PY{n}{GridSearchCV}
+         
+         \PY{n}{multinomial\PYZus{}naive\PYZus{}bayes\PYZus{}model} \PY{o}{=} \PY{n}{MultinomialNB}\PY{p}{(}\PY{p}{)}
+         \PY{n}{multinomial\PYZus{}nb\PYZus{}params} \PY{o}{=} \PY{p}{\PYZob{}}
+             \PY{l+s}{\PYZsq{}}\PY{l+s}{alpha}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{11}\PY{p}{)}\PY{p}{,}
+         \PY{p}{\PYZcb{}}
+         \PY{n}{gradient\PYZus{}search\PYZus{}mnb} \PY{o}{=} \PY{n}{GridSearchCV}\PY{p}{(}\PY{n}{multinomial\PYZus{}naive\PYZus{}bayes\PYZus{}model}\PY{p}{,} \PY{n}{multinomial\PYZus{}nb\PYZus{}params}\PY{p}{,} \PY{n}{cv}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{,} \PY{n}{scoring}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{accuracy}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{n\PYZus{}jobs}\PY{o}{=}\PY{l+m+mi}{4}\PY{p}{)}
+         \PY{n}{gradient\PYZus{}search\PYZus{}mnb}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{training\PYZus{}ingredients\PYZus{}DTM}\PY{p}{,} \PY{n}{training\PYZus{}load\PYZus{}data}\PY{o}{.}\PY{n}{cuisine}\PY{p}{)}
+         \PY{n+nb}{sorted}\PY{p}{(}\PY{n}{gradient\PYZus{}search\PYZus{}mnb}\PY{o}{.}\PY{n}{grid\PYZus{}scores\PYZus{}}\PY{p}{,} \PY{n}{key}\PY{o}{=}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{x}\PY{o}{.}\PY{n}{mean\PYZus{}validation\PYZus{}score}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}18}]:} [mean: 0.66046, std: 0.00510, params: \{'alpha': 1.0\},
+          mean: 0.66051, std: 0.00517, params: \{'alpha': 0.0\},
+          mean: 0.66056, std: 0.00503, params: \{'alpha': 0.80000000000000004\},
+          mean: 0.66066, std: 0.00498, params: \{'alpha': 0.60000000000000009\},
+          mean: 0.66066, std: 0.00512, params: \{'alpha': 0.90000000000000002\},
+          mean: 0.66071, std: 0.00504, params: \{'alpha': 0.70000000000000007\},
+          mean: 0.66086, std: 0.00546, params: \{'alpha': 0.20000000000000001\},
+          mean: 0.66091, std: 0.00541, params: \{'alpha': 0.40000000000000002\},
+          mean: 0.66093, std: 0.00525, params: \{'alpha': 0.5\},
+          mean: 0.66103, std: 0.00549, params: \{'alpha': 0.30000000000000004\},
+          mean: 0.66124, std: 0.00520, params: \{'alpha': 0.10000000000000001\}]
+\end{Verbatim}
+        
+    \paragraph{\texorpdfstring{\emph{Test the best model given by the cross
+validation
+results}}{Test the best model given by the cross validation results}}\label{test-the-best-model-given-by-the-cross-validation-results}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn.naive\PYZus{}bayes} \PY{k+kn}{import} \PY{n}{MultinomialNB}
+         \PY{n}{multinomial\PYZus{}naive\PYZus{}bayes\PYZus{}model} \PY{o}{=} \PY{n}{MultinomialNB}\PY{p}{(}\PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.1}\PY{p}{)}
+         \PY{n}{multinomial\PYZus{}naive\PYZus{}bayes\PYZus{}model}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{training\PYZus{}ingredients\PYZus{}DTM}\PY{p}{,}\PY{n}{training\PYZus{}load\PYZus{}data}\PY{o}{.}\PY{n}{cuisine}\PY{p}{)}
+         \PY{n}{mnb\PYZus{}predicted\PYZus{}labels} \PY{o}{=} \PY{n}{multinomial\PYZus{}naive\PYZus{}bayes\PYZus{}model}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{testing\PYZus{}ingredients\PYZus{}DTM}\PY{p}{)}
+         \PY{n}{output} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{data}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s}{\PYZdq{}}\PY{l+s}{id}\PY{l+s}{\PYZdq{}}\PY{p}{:}\PY{n}{testing\PYZus{}load\PYZus{}data}\PY{o}{.}\PY{n}{id}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{cuisine}\PY{l+s}{\PYZdq{}}\PY{p}{:}\PY{n}{mnb\PYZus{}predicted\PYZus{}labels}\PY{p}{\PYZcb{}}\PY{p}{)}
+         \PY{n}{output}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{../../Submissions/mnb\PYZus{}submission.csv}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n+nb+bp}{False}\PY{p}{,} \PY{n}{header}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{id}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{cuisine}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}
+         \PY{c}{\PYZsh{} 0.65306 Kaggle Score}
+\end{Verbatim}
+
+    \subsubsection{\texorpdfstring{(b) \emph{Creating a Bernouilli Naive
+Bayes
+Model}}{(b) Creating a Bernouilli Naive Bayes Model}}\label{b-creating-a-bernouilli-naive-bayes-model}
+
+\paragraph{\texorpdfstring{\emph{Run Cross
+Validation}}{Run Cross Validation}}\label{run-cross-validation}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn.naive\PYZus{}bayes} \PY{k+kn}{import} \PY{n}{BernoulliNB}
+         \PY{k+kn}{from} \PY{n+nn}{sklearn.grid\PYZus{}search} \PY{k+kn}{import} \PY{n}{GridSearchCV}
+         
+         \PY{n}{bernoulli\PYZus{}naive\PYZus{}bayes\PYZus{}model} \PY{o}{=} \PY{n}{BernoulliNB}\PY{p}{(}\PY{p}{)}
+         \PY{n}{bernoulli\PYZus{}nb\PYZus{}params} \PY{o}{=} \PY{p}{\PYZob{}}
+             \PY{l+s}{\PYZsq{}}\PY{l+s}{alpha}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{11}\PY{p}{)}\PY{p}{,}
+         \PY{p}{\PYZcb{}}
+         
+         \PY{n}{gradient\PYZus{}search\PYZus{}bnb} \PY{o}{=} \PY{n}{GridSearchCV}\PY{p}{(}\PY{n}{bernoulli\PYZus{}naive\PYZus{}bayes\PYZus{}model}\PY{p}{,} \PY{n}{bernoulli\PYZus{}nb\PYZus{}params}\PY{p}{,} \PY{n}{cv}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{,} \PY{n}{scoring}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{accuracy}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{n\PYZus{}jobs}\PY{o}{=}\PY{l+m+mi}{4}\PY{p}{)}
+         \PY{n}{gradient\PYZus{}search\PYZus{}bnb}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{training\PYZus{}ingredients\PYZus{}DTM}\PY{p}{,} \PY{n}{training\PYZus{}load\PYZus{}data}\PY{o}{.}\PY{n}{cuisine}\PY{p}{)}
+         \PY{n+nb}{sorted}\PY{p}{(}\PY{n}{gradient\PYZus{}search\PYZus{}bnb}\PY{o}{.}\PY{n}{grid\PYZus{}scores\PYZus{}}\PY{p}{,} \PY{n}{key}\PY{o}{=}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{x}\PY{o}{.}\PY{n}{mean\PYZus{}validation\PYZus{}score}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}20}]:} [mean: 0.65022, std: 0.00604, params: \{'alpha': 1.0\},
+          mean: 0.65030, std: 0.00616, params: \{'alpha': 0.90000000000000002\},
+          mean: 0.65040, std: 0.00672, params: \{'alpha': 0.0\},
+          mean: 0.65048, std: 0.00627, params: \{'alpha': 0.80000000000000004\},
+          mean: 0.65053, std: 0.00620, params: \{'alpha': 0.70000000000000007\},
+          mean: 0.65058, std: 0.00642, params: \{'alpha': 0.60000000000000009\},
+          mean: 0.65085, std: 0.00641, params: \{'alpha': 0.5\},
+          mean: 0.65108, std: 0.00677, params: \{'alpha': 0.40000000000000002\},
+          mean: 0.65113, std: 0.00695, params: \{'alpha': 0.30000000000000004\},
+          mean: 0.65120, std: 0.00721, params: \{'alpha': 0.10000000000000001\},
+          mean: 0.65130, std: 0.00710, params: \{'alpha': 0.20000000000000001\}]
+\end{Verbatim}
+        
+    \paragraph{\texorpdfstring{\emph{Test the best model given by the cross
+validation
+results}}{Test the best model given by the cross validation results}}\label{test-the-best-model-given-by-the-cross-validation-results}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn.naive\PYZus{}bayes} \PY{k+kn}{import} \PY{n}{BernoulliNB}
+         \PY{n}{bernoulli\PYZus{}naive\PYZus{}bayes\PYZus{}model} \PY{o}{=} \PY{n}{BernoulliNB}\PY{p}{(}\PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.2}\PY{p}{)}
+         \PY{n}{bernoulli\PYZus{}naive\PYZus{}bayes\PYZus{}model}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{training\PYZus{}ingredients\PYZus{}DTM}\PY{p}{,}\PY{n}{training\PYZus{}load\PYZus{}data}\PY{o}{.}\PY{n}{cuisine}\PY{p}{)}
+         \PY{n}{bnb\PYZus{}predicted\PYZus{}labels} \PY{o}{=} \PY{n}{bernoulli\PYZus{}naive\PYZus{}bayes\PYZus{}model}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{testing\PYZus{}ingredients\PYZus{}DTM}\PY{p}{)}
+         \PY{n}{output} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{data}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s}{\PYZdq{}}\PY{l+s}{id}\PY{l+s}{\PYZdq{}}\PY{p}{:}\PY{n}{testing\PYZus{}load\PYZus{}data}\PY{o}{.}\PY{n}{id}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{cuisine}\PY{l+s}{\PYZdq{}}\PY{p}{:}\PY{n}{bnb\PYZus{}predicted\PYZus{}labels}\PY{p}{\PYZcb{}}\PY{p}{)}
+         \PY{n}{output}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{../../Submissions/bnb\PYZus{}submission.csv}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n+nb+bp}{False}\PY{p}{,} \PY{n}{header}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{id}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{cuisine}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}
+         \PY{c}{\PYZsh{} 0.64220 Kaggle Score }
+\end{Verbatim}
+
+    \subsubsection{\texorpdfstring{(c) \emph{Creating an Adaboost
+Classifier}}{(c) Creating an Adaboost Classifier}}\label{c-creating-an-adaboost-classifier}
+
+\paragraph{\texorpdfstring{\emph{Run Cross
+Validation}}{Run Cross Validation}}\label{run-cross-validation}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn.ensemble} \PY{k+kn}{import} \PY{n}{AdaBoostClassifier}
+         \PY{k+kn}{from} \PY{n+nn}{sklearn.grid\PYZus{}search} \PY{k+kn}{import} \PY{n}{GridSearchCV}
+         \PY{k+kn}{from} \PY{n+nn}{time} \PY{k+kn}{import} \PY{n}{time}
+         
+         \PY{n}{adaboost\PYZus{}model} \PY{o}{=} \PY{n}{AdaBoostClassifier}\PY{p}{(}\PY{p}{)}
+         \PY{n}{ab\PYZus{}params} \PY{o}{=} \PY{p}{\PYZob{}}
+             \PY{l+s}{\PYZsq{}}\PY{l+s}{n\PYZus{}estimators}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{250}\PY{p}{,}\PY{l+m+mi}{1001}\PY{p}{,}\PY{l+m+mi}{250}\PY{p}{)}\PY{p}{,} 
+             \PY{l+s}{\PYZsq{}}\PY{l+s}{learning\PYZus{}rate}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mf}{0.3}\PY{p}{,}\PY{l+m+mf}{0.7}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,}
+         \PY{p}{\PYZcb{}}
+         \PY{c}{\PYZsh{} Recored the time it takes to perform the search}
+         \PY{n}{start} \PY{o}{=} \PY{n}{time}\PY{p}{(}\PY{p}{)}
+         \PY{n}{gradient\PYZus{}search\PYZus{}adaboost} \PY{o}{=} \PY{n}{GridSearchCV}\PY{p}{(}\PY{n}{adaboost\PYZus{}model}\PY{p}{,} \PY{n}{ab\PYZus{}params}\PY{p}{,} \PY{n}{cv}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{,} \PY{n}{scoring}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{accuracy}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{n\PYZus{}jobs}\PY{o}{=}\PY{l+m+mi}{4}\PY{p}{)}
+         \PY{n}{gradient\PYZus{}search\PYZus{}adaboost}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{training\PYZus{}ingredients\PYZus{}DTM\PYZus{}array}\PY{p}{,} \PY{n}{training\PYZus{}load\PYZus{}data}\PY{o}{.}\PY{n}{cuisine}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Adaboost Training finished in }\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s}{ seconds}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{n}{time}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{start}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Adaboost Training finished in 9392.26 seconds
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{n+nb}{sorted}\PY{p}{(}\PY{n}{gradient\PYZus{}search\PYZus{}adaboost}\PY{o}{.}\PY{n}{grid\PYZus{}scores\PYZus{}}\PY{p}{,} \PY{n}{key}\PY{o}{=}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{x}\PY{o}{.}\PY{n}{mean\PYZus{}validation\PYZus{}score}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}20}]:} [mean: 0.40801, std: 0.01580, params: \{'n\_estimators': 1000, 'learning\_rate': 0.69999999999999996\},
+          mean: 0.44569, std: 0.01899, params: \{'n\_estimators': 1000, 'learning\_rate': 0.59999999999999998\},
+          mean: 0.45924, std: 0.01476, params: \{'n\_estimators': 750, 'learning\_rate': 0.69999999999999996\},
+          mean: 0.48051, std: 0.01741, params: \{'n\_estimators': 1000, 'learning\_rate': 0.5\},
+          mean: 0.49261, std: 0.01605, params: \{'n\_estimators': 750, 'learning\_rate': 0.59999999999999998\},
+          mean: 0.52366, std: 0.02293, params: \{'n\_estimators': 1000, 'learning\_rate': 0.39999999999999997\},
+          mean: 0.52954, std: 0.01947, params: \{'n\_estimators': 500, 'learning\_rate': 0.69999999999999996\},
+          mean: 0.53022, std: 0.01881, params: \{'n\_estimators': 750, 'learning\_rate': 0.5\},
+          mean: 0.55710, std: 0.01861, params: \{'n\_estimators': 500, 'learning\_rate': 0.59999999999999998\},
+          mean: 0.57465, std: 0.01794, params: \{'n\_estimators': 750, 'learning\_rate': 0.39999999999999997\},
+          mean: 0.57776, std: 0.01828, params: \{'n\_estimators': 1000, 'learning\_rate': 0.29999999999999999\},
+          mean: 0.59365, std: 0.01787, params: \{'n\_estimators': 500, 'learning\_rate': 0.5\},
+          mean: 0.61553, std: 0.01610, params: \{'n\_estimators': 750, 'learning\_rate': 0.29999999999999999\},
+          mean: 0.61870, std: 0.01925, params: \{'n\_estimators': 250, 'learning\_rate': 0.69999999999999996\},
+          mean: 0.62473, std: 0.01612, params: \{'n\_estimators': 500, 'learning\_rate': 0.39999999999999997\},
+          mean: 0.63363, std: 0.01625, params: \{'n\_estimators': 250, 'learning\_rate': 0.59999999999999998\},
+          mean: 0.64283, std: 0.01117, params: \{'n\_estimators': 500, 'learning\_rate': 0.29999999999999999\},
+          mean: 0.64354, std: 0.00560, params: \{'n\_estimators': 250, 'learning\_rate': 0.29999999999999999\},
+          mean: 0.64366, std: 0.01160, params: \{'n\_estimators': 250, 'learning\_rate': 0.5\},
+          mean: 0.64965, std: 0.00619, params: \{'n\_estimators': 250, 'learning\_rate': 0.39999999999999997\}]
+\end{Verbatim}
+        
+    \paragraph{\texorpdfstring{\emph{Test the best model given by the cross
+validation
+results}}{Test the best model given by the cross validation results}}\label{test-the-best-model-given-by-the-cross-validation-results}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn.ensemble} \PY{k+kn}{import} \PY{n}{AdaBoostClassifier}
+         \PY{n}{adaboost\PYZus{}model} \PY{o}{=} \PY{n}{AdaBoostClassifier}\PY{p}{(}\PY{n}{learning\PYZus{}rate}\PY{o}{=}\PY{l+m+mf}{0.4}\PY{p}{,} \PY{n}{n\PYZus{}estimators}\PY{o}{=}\PY{l+m+mi}{250}\PY{p}{)}
+         \PY{n}{adaboost\PYZus{}model}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{training\PYZus{}ingredients\PYZus{}DTM\PYZus{}array}\PY{p}{,}\PY{n}{training\PYZus{}load\PYZus{}data}\PY{o}{.}\PY{n}{cuisine}\PY{p}{)}
+         \PY{n}{adaboost\PYZus{}predicted\PYZus{}labels} \PY{o}{=} \PY{n}{adaboost\PYZus{}model}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{testing\PYZus{}ingredients\PYZus{}DTM\PYZus{}array}\PY{p}{)}
+         \PY{n}{output} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{data}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s}{\PYZdq{}}\PY{l+s}{id}\PY{l+s}{\PYZdq{}}\PY{p}{:}\PY{n}{testing\PYZus{}load\PYZus{}data}\PY{o}{.}\PY{n}{id}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{cuisine}\PY{l+s}{\PYZdq{}}\PY{p}{:}\PY{n}{adaboost\PYZus{}predicted\PYZus{}labels}\PY{p}{\PYZcb{}}\PY{p}{)}
+         \PY{n}{output}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{../../Submissions/adb\PYZus{}submission.csv}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n+nb+bp}{False}\PY{p}{,} \PY{n}{header}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{id}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{cuisine}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}
+         \PY{c}{\PYZsh{} 0.64722 Kaggle Score }
+\end{Verbatim}
+
+    \subsubsection{\texorpdfstring{(d) \emph{Creating a Random Forest
+Classifier}}{(d) Creating a Random Forest Classifier}}\label{d-creating-a-random-forest-classifier}
+
+\paragraph{\texorpdfstring{\emph{Run Cross
+Validation}}{Run Cross Validation}}\label{run-cross-validation}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn.ensemble} \PY{k+kn}{import} \PY{n}{RandomForestClassifier}
+         \PY{k+kn}{from} \PY{n+nn}{sklearn} \PY{k+kn}{import} \PY{n}{cross\PYZus{}validation}
+         \PY{k+kn}{from} \PY{n+nn}{sklearn.metrics} \PY{k+kn}{import} \PY{n}{accuracy\PYZus{}score}
+         \PY{k+kn}{from} \PY{n+nn}{time} \PY{k+kn}{import} \PY{n}{time}
+         
+         \PY{n}{random\PYZus{}forest\PYZus{}model} \PY{o}{=} \PY{n}{RandomForestClassifier}\PY{p}{(}\PY{p}{)}
+         \PY{n}{rf\PYZus{}params} \PY{o}{=} \PY{p}{\PYZob{}}
+             \PY{l+s}{\PYZsq{}}\PY{l+s}{n\PYZus{}estimators}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{250}\PY{p}{,}\PY{l+m+mi}{1001}\PY{p}{,}\PY{l+m+mi}{250}\PY{p}{)}\PY{p}{,} 
+             \PY{l+s}{\PYZsq{}}\PY{l+s}{max\PYZus{}depth}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{p}{[}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{25}\PY{p}{,}\PY{l+m+mi}{50}\PY{p}{]}\PY{p}{,}
+         \PY{p}{\PYZcb{}}
+         \PY{c}{\PYZsh{} Recored the time it takes to perform the search}
+         \PY{n}{start} \PY{o}{=} \PY{n}{time}\PY{p}{(}\PY{p}{)}
+         \PY{n}{gradient\PYZus{}search\PYZus{}rf} \PY{o}{=} \PY{n}{GridSearchCV}\PY{p}{(}\PY{n}{random\PYZus{}forest\PYZus{}model}\PY{p}{,} \PY{n}{rf\PYZus{}params}\PY{p}{,} \PY{n}{cv}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{,} \PY{n}{scoring}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{accuracy}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{n\PYZus{}jobs}\PY{o}{=}\PY{l+m+mi}{4}\PY{p}{)}
+         \PY{n}{gradient\PYZus{}search\PYZus{}rf}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{training\PYZus{}ingredients\PYZus{}DTM\PYZus{}array}\PY{p}{,} \PY{n}{training\PYZus{}load\PYZus{}data}\PY{o}{.}\PY{n}{cuisine}\PY{p}{)}
+         \PY{n+nb}{sorted}\PY{p}{(}\PY{n}{gradient\PYZus{}search\PYZus{}rf}\PY{o}{.}\PY{n}{grid\PYZus{}scores\PYZus{}}\PY{p}{,} \PY{n}{key}\PY{o}{=}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{x}\PY{o}{.}\PY{n}{mean\PYZus{}validation\PYZus{}score}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Random Forest Training finished in }\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s}{ seconds}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{n}{time}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{start}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Random Forest Training finished in 3080.76 seconds
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n+nb}{sorted}\PY{p}{(}\PY{n}{gradient\PYZus{}search\PYZus{}rf}\PY{o}{.}\PY{n}{grid\PYZus{}scores\PYZus{}}\PY{p}{,} \PY{n}{key}\PY{o}{=}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{x}\PY{o}{.}\PY{n}{mean\PYZus{}validation\PYZus{}score}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor} }]:} [mean: 0.56620, std: 0.00622, params: \{'n\_estimators': 750, 'max\_depth': 10\},
+         mean: 0.56638, std: 0.00656, params: \{'n\_estimators': 250, 'max\_depth': 10\},
+         mean: 0.56668, std: 0.00492, params: \{'n\_estimators': 500, 'max\_depth': 10\},
+         mean: 0.56751, std: 0.00648, params: \{'n\_estimators': 1000, 'max\_depth': 10\},
+         mean: 0.69442, std: 0.00567, params: \{'n\_estimators': 250, 'max\_depth': 25\},
+         mean: 0.69457, std: 0.00602, params: \{'n\_estimators': 500, 'max\_depth': 25\},
+         mean: 0.69498, std: 0.00569, params: \{'n\_estimators': 1000, 'max\_depth': 25\},
+         mean: 0.69503, std: 0.00579, params: \{'n\_estimators': 750, 'max\_depth': 25\},
+         mean: 0.74111, std: 0.00709, params: \{'n\_estimators': 250, 'max\_depth': 50\},
+         mean: 0.74187, std: 0.00567, params: \{'n\_estimators': 500, 'max\_depth': 50\},
+         mean: 0.74257, std: 0.00616, params: \{'n\_estimators': 750, 'max\_depth': 50\},
+         mean: 0.74270, std: 0.00574, params: \{'n\_estimators': 1000, 'max\_depth': 50\}]
+\end{Verbatim}
+        
+    \paragraph{\texorpdfstring{\emph{Test the best model given by the cross
+validation
+results}}{Test the best model given by the cross validation results}}\label{test-the-best-model-given-by-the-cross-validation-results}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{best\PYZus{}random\PYZus{}forest\PYZus{}model} \PY{o}{=} \PY{n}{RandomForestClassifier}\PY{p}{(}\PY{n}{n\PYZus{}estimators}\PY{o}{=}\PY{l+m+mi}{1000}\PY{p}{,} \PY{n}{max\PYZus{}depth}\PY{o}{=}\PY{l+m+mi}{50}\PY{p}{)}
+        \PY{n}{best\PYZus{}random\PYZus{}forest\PYZus{}model}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{training\PYZus{}ingredients\PYZus{}DTM\PYZus{}array}\PY{p}{,}\PY{n}{training\PYZus{}load\PYZus{}data}\PY{o}{.}\PY{n}{cuisine}\PY{p}{)}
+        \PY{n}{rf\PYZus{}prediction\PYZus{}labels} \PY{o}{=} \PY{n}{best\PYZus{}random\PYZus{}forest\PYZus{}model}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{testing\PYZus{}ingredients\PYZus{}DTM\PYZus{}array}\PY{p}{)}
+        \PY{n}{output} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{data}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s}{\PYZdq{}}\PY{l+s}{id}\PY{l+s}{\PYZdq{}}\PY{p}{:}\PY{n}{testing\PYZus{}load\PYZus{}data}\PY{o}{.}\PY{n}{id}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{cuisine}\PY{l+s}{\PYZdq{}}\PY{p}{:}\PY{n}{rf\PYZus{}prediction\PYZus{}labels}\PY{p}{\PYZcb{}}\PY{p}{)}
+        \PY{n}{output}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{../../Submissions/rf\PYZus{}submission.csv}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n+nb+bp}{False}\PY{p}{,} \PY{n}{header}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{id}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{cuisine}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}
+        \PY{c}{\PYZsh{} 0.73994 Kaggle Score}
+\end{Verbatim}
+
+    \subsubsection{\texorpdfstring{(e) \emph{Creating a Extra Trees
+Classifier}}{(e) Creating a Extra Trees Classifier}}\label{e-creating-a-extra-trees-classifier}
+
+\paragraph{\texorpdfstring{\emph{Run Cross
+Validation}}{Run Cross Validation}}\label{run-cross-validation}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn.ensemble} \PY{k+kn}{import} \PY{n}{ExtraTreesClassifier} 
+         \PY{k+kn}{from} \PY{n+nn}{time} \PY{k+kn}{import} \PY{n}{time}
+         \PY{k+kn}{from} \PY{n+nn}{sklearn.grid\PYZus{}search} \PY{k+kn}{import} \PY{n}{GridSearchCV}
+         
+         \PY{n}{extra\PYZus{}trees\PYZus{}model} \PY{o}{=} \PY{n}{ExtraTreesClassifier}\PY{p}{(}\PY{p}{)}
+         \PY{n}{et\PYZus{}params} \PY{o}{=} \PY{p}{\PYZob{}}
+             \PY{l+s}{\PYZsq{}}\PY{l+s}{n\PYZus{}estimators}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{250}\PY{p}{,}\PY{l+m+mi}{1001}\PY{p}{,}\PY{l+m+mi}{250}\PY{p}{)}\PY{p}{,} 
+             \PY{l+s}{\PYZsq{}}\PY{l+s}{max\PYZus{}depth}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{p}{[}\PY{l+m+mi}{50}\PY{p}{,} \PY{l+m+mi}{75}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{]}\PY{p}{,} \PY{c}{\PYZsh{}[5, 10, 25],}
+         \PY{p}{\PYZcb{}}
+         \PY{c}{\PYZsh{} Recored the time it takes to perform the search}
+         \PY{n}{start} \PY{o}{=} \PY{n}{time}\PY{p}{(}\PY{p}{)}
+         \PY{n}{gradient\PYZus{}search\PYZus{}et} \PY{o}{=} \PY{n}{GridSearchCV}\PY{p}{(}\PY{n}{extra\PYZus{}trees\PYZus{}model}\PY{p}{,} \PY{n}{et\PYZus{}params}\PY{p}{,} \PY{n}{cv}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{,} \PY{n}{scoring}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{accuracy}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{n\PYZus{}jobs}\PY{o}{=}\PY{l+m+mi}{4}\PY{p}{)}
+         \PY{n}{gradient\PYZus{}search\PYZus{}et}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{training\PYZus{}ingredients\PYZus{}DTM\PYZus{}array}\PY{p}{,} \PY{n}{training\PYZus{}load\PYZus{}data}\PY{o}{.}\PY{n}{cuisine}\PY{p}{)}
+         \PY{n+nb}{sorted}\PY{p}{(}\PY{n}{gradient\PYZus{}search\PYZus{}et}\PY{o}{.}\PY{n}{grid\PYZus{}scores\PYZus{}}\PY{p}{,} \PY{n}{key}\PY{o}{=}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{x}\PY{o}{.}\PY{n}{mean\PYZus{}validation\PYZus{}score}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Extra Trees Training finished in }\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{n}{time}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{start}\PY{p}{)}\PY{p}{)}
+         \PY{c}{\PYZsh{} extra\PYZus{}trees\PYZus{}gbm.feature\PYZus{}importances\PYZus{} for feature imp}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Extra Trees Training finished in 9606.07
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{n+nb}{sorted}\PY{p}{(}\PY{n}{gradient\PYZus{}search\PYZus{}et}\PY{o}{.}\PY{n}{grid\PYZus{}scores\PYZus{}}\PY{p}{,} \PY{n}{key}\PY{o}{=}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{x}\PY{o}{.}\PY{n}{mean\PYZus{}validation\PYZus{}score}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}19}]:} [mean: 0.74886, std: 0.00604, params: \{'n\_estimators': 250, 'max\_depth': 50\},
+          mean: 0.74964, std: 0.00420, params: \{'n\_estimators': 500, 'max\_depth': 50\},
+          mean: 0.75104, std: 0.00404, params: \{'n\_estimators': 750, 'max\_depth': 50\},
+          mean: 0.75122, std: 0.00448, params: \{'n\_estimators': 1000, 'max\_depth': 50\},
+          mean: 0.75645, std: 0.00450, params: \{'n\_estimators': 250, 'max\_depth': 100\},
+          mean: 0.75657, std: 0.00464, params: \{'n\_estimators': 250, 'max\_depth': 75\},
+          mean: 0.75665, std: 0.00507, params: \{'n\_estimators': 500, 'max\_depth': 100\},
+          mean: 0.75688, std: 0.00456, params: \{'n\_estimators': 750, 'max\_depth': 100\},
+          mean: 0.75728, std: 0.00490, params: \{'n\_estimators': 1000, 'max\_depth': 100\},
+          mean: 0.75743, std: 0.00415, params: \{'n\_estimators': 500, 'max\_depth': 75\},
+          mean: 0.75771, std: 0.00479, params: \{'n\_estimators': 1000, 'max\_depth': 75\},
+          mean: 0.75879, std: 0.00423, params: \{'n\_estimators': 750, 'max\_depth': 75\}]
+\end{Verbatim}
+        
+    \paragraph{\texorpdfstring{\emph{Test the best model given by the cross
+validation
+results}}{Test the best model given by the cross validation results}}\label{test-the-best-model-given-by-the-cross-validation-results}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{n}{best\PYZus{}et\PYZus{}model} \PY{o}{=} \PY{n}{ExtraTreesClassifier}\PY{p}{(}\PY{n}{n\PYZus{}estimators}\PY{o}{=}\PY{l+m+mi}{750}\PY{p}{,} \PY{n}{max\PYZus{}depth}\PY{o}{=}\PY{l+m+mi}{75}\PY{p}{)}
+         \PY{n}{best\PYZus{}et\PYZus{}model}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{training\PYZus{}ingredients\PYZus{}DTM\PYZus{}array}\PY{p}{,}\PY{n}{training\PYZus{}load\PYZus{}data}\PY{o}{.}\PY{n}{cuisine}\PY{p}{)}
+         \PY{n}{et\PYZus{}prediction\PYZus{}labels} \PY{o}{=} \PY{n}{best\PYZus{}et\PYZus{}model}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{testing\PYZus{}ingredients\PYZus{}DTM\PYZus{}array}\PY{p}{)}
+         \PY{n}{output} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{data}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s}{\PYZdq{}}\PY{l+s}{id}\PY{l+s}{\PYZdq{}}\PY{p}{:}\PY{n}{testing\PYZus{}load\PYZus{}data}\PY{o}{.}\PY{n}{id}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{cuisine}\PY{l+s}{\PYZdq{}}\PY{p}{:}\PY{n}{et\PYZus{}prediction\PYZus{}labels}\PY{p}{\PYZcb{}}\PY{p}{)}
+         \PY{n}{output}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{../../Submissions/et\PYZus{}submission.csv}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n+nb+bp}{False}\PY{p}{,} \PY{n}{header}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{id}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+s}{\PYZdq{}}\PY{l+s}{cuisine}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}
+         \PY{c}{\PYZsh{} 0.75754 Kaggle Score \PYZhy{}\PYZhy{} Best score so far}
+\end{Verbatim}
+
+    \subsection{Part 4: Applied Predictive Modeling in
+R}\label{part-4-applied-predictive-modeling-in-r}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}26}]:} \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} rpy2.ipython
+\end{Verbatim}
+
+    \paragraph{\texorpdfstring{\emph{Loading the
+data}}{Loading the data}}\label{loading-the-data}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}27}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{R}
+         library(jsonlite)
+         train.data \PYZlt{}\PYZhy{} fromJSON(\PYZdq{}../Data/train.json\PYZdq{}, flatten=T)
+         test.data \PYZlt{}\PYZhy{} fromJSON(\PYZdq{}../Data/test.json\PYZdq{}, flatten=T)
+         combined.data.frame \PYZlt{}\PYZhy{} rbind(train.data[!names(train.data) \PYZpc{}in\PYZpc{} \PYZdq{}cuisine\PYZdq{}], test.data)
+\end{Verbatim}
+
+    
+    \begin{verbatim}
+
+Attaching package: ‘jsonlite’
+
+The following object is masked from ‘package:utils’:
+
+    View
+
+
+    \end{verbatim}
+
+    
+    \paragraph{\texorpdfstring{\emph{Pre-Processing the data \& creating the
+Document (Ingredient)
+Matrix}}{Pre-Processing the data \& creating the Document (Ingredient) Matrix}}\label{pre-processing-the-data-creating-the-document-ingredient-matrix}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}30}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{R}
+         require(tm)
+         combined.ingredients \PYZlt{}\PYZhy{} Corpus(VectorSource(combined.data.frame\PYZdl{}ingredients))
+         combined.ingredients \PYZlt{}\PYZhy{} tm\PYZus{}map(combined.ingredients, content\PYZus{}transformer(tolower))
+         combined.ingredients \PYZlt{}\PYZhy{} tm\PYZus{}map(combined.ingredients, stripWhitespace)
+         combined.ingredients \PYZlt{}\PYZhy{} tm\PYZus{}map(combined.ingredients, removeNumbers)
+         combined.ingredients \PYZlt{}\PYZhy{} tm\PYZus{}map(combined.ingredients, removePunctuation)
+         require(SnowballC)
+         combined.ingredients \PYZlt{}\PYZhy{} tm\PYZus{}map(combined.ingredients, stemDocument)
+         combined.ingredients.DTM \PYZlt{}\PYZhy{} DocumentTermMatrix(combined.ingredients)
+         combined.ingredients.sparse.DTM \PYZlt{}\PYZhy{} removeSparseTerms(combined.ingredients.DTM, 0.99)
+         combined.ingredients.sparse.DTM \PYZlt{}\PYZhy{} as.data.frame(as.matrix(combined.ingredients.sparse.DTM))
+\end{Verbatim}
+
+    \paragraph{\texorpdfstring{\emph{Split the data into
+training-validation-testing
+sets}}{Split the data into training-validation-testing sets}}\label{split-the-data-into-training-validation-testing-sets}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}31}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{R}
+         training.samples = dim(train.data)[1]
+         training.ingredients.DTM = combined.ingredients.sparse.DTM[1:training.samples,]
+         training.ingredients.DTM\PYZdl{}cuisine = as.factor(train.data\PYZdl{}cuisine)
+         require(caret)
+         partition.training.samples \PYZlt{}\PYZhy{} sample(training.samples, 0.7 * training.samples)
+         training.subset.DTM \PYZlt{}\PYZhy{} training.ingredients.DTM[partition.training.samples,]
+         validating.subset.DTM \PYZlt{}\PYZhy{} training.ingredients.DTM[\PYZhy{}partition.training.samples,]
+         
+         testing.samples = dim(test.data)[1]
+         testing.ingredients.DTM = combined.ingredients.sparse.DTM[(training.samples+1):(training.samples+testing.samples),]
+\end{Verbatim}
+
+    
+    \begin{verbatim}
+Loading required package: caret
+Loading required package: lattice
+Loading required package: ggplot2
+
+Attaching package: ‘ggplot2’
+
+The following object is masked from ‘package:NLP’:
+
+    annotate
+
+
+    \end{verbatim}
+
+    
+    \subsubsection{\texorpdfstring{(a) \emph{Creating a CART
+Classifier}}{(a) Creating a CART Classifier}}\label{a-creating-a-cart-classifier}
+
+\paragraph{\texorpdfstring{\emph{Run Cross
+Validation}}{Run Cross Validation}}\label{run-cross-validation}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}32}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{R}
+         require(rpart)
+         require(MASS)
+         cart.model.fit \PYZlt{}\PYZhy{} rpart(cuisine \PYZti{}., data = training.subset.DTM, method = \PYZdq{}class\PYZdq{})
+         cart.model.predicted.cuisine \PYZlt{}\PYZhy{} predict(cart.model.fit, newdata = validating.subset.DTM, type = \PYZdq{}class\PYZdq{})
+         cart.confusion.matrix \PYZlt{}\PYZhy{} confusionMatrix(cart.model.predicted.cuisine, validating.subset.DTM\PYZdl{}cuisine)
+         cart.confusion.matrix
+\end{Verbatim}
+
+    
+    \begin{verbatim}
+Confusion Matrix and Statistics
+
+              Reference
+Prediction     brazilian british cajun_creole chinese filipino french greek
+  brazilian            0       0            0       0        0      0     0
+  british              0       0            0       0        0      0     0
+  cajun_creole         0       0            0       0        0      0     0
+  chinese              1       2            2     629       86      1     2
+  filipino             0       0            0       0        0      0     0
+  french               0       0            0       0        0      0     0
+  greek                0       0            0       0        0      0     0
+  indian               0       0            0       0        0      0     0
+  irish                0       0            0       0        0      0     0
+  italian             43      21          120      13        8    268   213
+  jamaican             0       0            0       0        0      0     0
+  japanese             0       0            0       0        0      0     0
+  korean               0       0            0       0        0      0     0
+  mexican             33       0            9      17        3      4     2
+  moroccan             0       0            0       0        0      0     0
+  russian              0       0            0       0        0      0     0
+  southern_us         84     204          345     169      147    518   130
+  spanish              0       0            0       0        0      0     0
+  thai                 0       0            0       0        0      0     0
+  vietnamese           0       0            0       0        0      0     0
+              Reference
+Prediction     indian irish italian jamaican japanese korean mexican moroccan
+  brazilian         0     0       0        0        0      0       0        0
+  british           0     0       0        0        0      0       0        0
+  cajun_creole      0     0       0        0        0      0       0        0
+  chinese           5     1       9       20      219    139      15        4
+  filipino          0     0       0        0        0      0       0        0
+  french            0     0       0        0        0      0       0        0
+  greek             0     0       0        0        0      0       0        0
+  indian          246     0       0        0       16      0       0        2
+  irish             0     0       0        0        0      0       0        0
+  italian          45    18    1695       14       11      3     165      100
+  jamaican          0     0       0        0        0      0       0        0
+  japanese          0     0       0        0        0      0       0        0
+  korean            0     0       0        0        0      0       0        0
+  mexican         184     3      18        7        7      7    1213       77
+  moroccan          0     0       0        0        0      0       0        0
+  russian           0     0       0        0        0      0       0        0
+  southern_us     387   171     673      110      142     92     524       60
+  spanish           0     0       0        0        0      0       0        0
+  thai              0     0       0        0        0      0       0        0
+  vietnamese        0     0       0        0        0      0       0        0
+              Reference
+Prediction     russian southern_us spanish thai vietnamese
+  brazilian          0           0       0    0          0
+  british            0           0       0    0          0
+  cajun_creole       0           0       0    0          0
+  chinese            2          12       0  145         62
+  filipino           0           0       0    0          0
+  french             0           0       0    0          0
+  greek              0           0       0    0          0
+  indian             1           1       0    0          0
+  irish              0           0       0    0          0
+  italian           18         145     187   11          2
+  jamaican           0           0       0    0          0
+  japanese           0           0       0    0          0
+  korean             0           0       0    0          0
+  mexican            3          25      25  148         76
+  moroccan           0           0       0    0          0
+  russian            0           0       0    0          0
+  southern_us      121        1108      91  156        118
+  spanish            0           0       0    0          0
+  thai               0           0       0    0          0
+  vietnamese         0           0       0    0          0
+
+Overall Statistics
+                                         
+               Accuracy : 0.4099         
+                 95% CI : (0.401, 0.4188)
+    No Information Rate : 0.2007         
+    P-Value [Acc > NIR] : < 2.2e-16      
+                                         
+                  Kappa : 0.3176         
+ Mcnemar's Test P-Value : NA             
+
+Statistics by Class:
+
+                     Class: brazilian Class: british Class: cajun_creole
+Sensitivity                   0.00000        0.00000             0.00000
+Specificity                   1.00000        1.00000             1.00000
+Pos Pred Value                    NaN            NaN                 NaN
+Neg Pred Value                0.98651        0.98098             0.96011
+Prevalence                    0.01349        0.01902             0.03989
+Detection Rate                0.00000        0.00000             0.00000
+Detection Prevalence          0.00000        0.00000             0.00000
+Balanced Accuracy             0.50000        0.50000             0.50000
+                     Class: chinese Class: filipino Class: french Class: greek
+Sensitivity                 0.75966         0.00000       0.00000      0.00000
+Specificity                 0.93453         1.00000       1.00000      1.00000
+Pos Pred Value              0.46386             NaN           NaN          NaN
+Neg Pred Value              0.98119         0.97955       0.93371      0.97092
+Prevalence                  0.06939         0.02045       0.06629      0.02908
+Detection Rate              0.05271         0.00000       0.00000      0.00000
+Detection Prevalence        0.11363         0.00000       0.00000      0.00000
+Balanced Accuracy           0.84710         0.50000       0.50000      0.50000
+                     Class: indian Class: irish Class: italian Class: jamaican
+Sensitivity                0.28374      0.00000         0.7077         0.00000
+Specificity                0.99819      1.00000         0.8527         1.00000
+Pos Pred Value             0.92481          NaN         0.5468             NaN
+Neg Pred Value             0.94677      0.98383         0.9208         0.98735
+Prevalence                 0.07266      0.01617         0.2007         0.01265
+Detection Rate             0.02062      0.00000         0.1420         0.00000
+Detection Prevalence       0.02229      0.00000         0.2598         0.00000
+Balanced Accuracy          0.64096      0.50000         0.7802         0.50000
+                     Class: japanese Class: korean Class: mexican
+Sensitivity                   0.0000        0.0000         0.6328
+Specificity                   1.0000        1.0000         0.9353
+Pos Pred Value                   NaN           NaN         0.6518
+Neg Pred Value                0.9669        0.9798         0.9301
+Prevalence                    0.0331        0.0202         0.1606
+Detection Rate                0.0000        0.0000         0.1017
+Detection Prevalence          0.0000        0.0000         0.1560
+Balanced Accuracy             0.5000        0.5000         0.7840
+                     Class: moroccan Class: russian Class: southern_us
+Sensitivity                  0.00000        0.00000            0.85825
+Specificity                  1.00000        1.00000            0.60139
+Pos Pred Value                   NaN            NaN            0.20710
+Neg Pred Value               0.97964        0.98785            0.97220
+Prevalence                   0.02036        0.01215            0.10819
+Detection Rate               0.00000        0.00000            0.09285
+Detection Prevalence         0.00000        0.00000            0.44834
+Balanced Accuracy            0.50000        0.50000            0.72982
+                     Class: spanish Class: thai Class: vietnamese
+Sensitivity                 0.00000     0.00000           0.00000
+Specificity                 1.00000     1.00000           1.00000
+Pos Pred Value                  NaN         NaN               NaN
+Neg Pred Value              0.97461     0.96145           0.97838
+Prevalence                  0.02539     0.03855           0.02162
+Detection Rate              0.00000     0.00000           0.00000
+Detection Prevalence        0.00000     0.00000           0.00000
+Balanced Accuracy           0.50000     0.50000           0.50000
+
+    \end{verbatim}
+
+    
+    \paragraph{\texorpdfstring{\emph{Test the CART
+Model}}{Test the CART Model}}\label{test-the-cart-model}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}33}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{R}
+         require(rpart)
+         require(rpart.plot)
+         require(MASS)
+         cart.model.fit \PYZlt{}\PYZhy{} rpart(cuisine \PYZti{}., data = training.ingredients.DTM, method = \PYZdq{}class\PYZdq{})
+         prp(cart.model.fit)
+         cart.model.predicted.cuisine \PYZlt{}\PYZhy{} predict(cart.model.fit, newdata = testing.ingredients.DTM, type = \PYZdq{}class\PYZdq{})
+         
+         cart.model.output.data \PYZlt{}\PYZhy{} as.data.frame(cbind(test.data\PYZdl{}id,as.character(cart.model.predicted.cuisine)))
+         colnames(cart.model.output.data) \PYZlt{}\PYZhy{} c(\PYZdq{}id\PYZdq{}, \PYZdq{}cuisine\PYZdq{})
+         write.table(format(cart.model.output.data, scientific=FALSE), file = \PYZdq{}../../Submissions/cart\PYZus{}submission.csv\PYZdq{}, sep=\PYZdq{},\PYZdq{},quote = F, row.names=F)
+         \PYZsh{} 0.40185 Kaggle Score
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{What's Cooking_files/What's Cooking_64_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsubsection{\texorpdfstring{(b) \emph{Creating an Extreme Gradient
+Boosting
+Model}}{(b) Creating an Extreme Gradient Boosting Model}}\label{b-creating-an-extreme-gradient-boosting-model}
+
+\paragraph{\texorpdfstring{\emph{Run Cross
+Validation}}{Run Cross Validation}}\label{run-cross-validation}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}34}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{R}
+         require(xgboost)
+         xgb.grid \PYZlt{}\PYZhy{} expand.grid(nround = c(25,50,100), max.depth = c(10,25), eta = c(0.4,0.6))
+         xgb.document.matrix \PYZlt{}\PYZhy{} xgb.DMatrix(as.matrix(training.subset.DTM[!names(training.subset.DTM) \PYZpc{}in\PYZpc{} \PYZdq{}cuisine\PYZdq{}]),label=as.numeric(training.subset.DTM\PYZdl{}cuisine)\PYZhy{}1)
+         for(i in 1:nrow(xgb.grid)) \PYZob{}
+           model.xgb.train \PYZlt{}\PYZhy{} xgboost(data = xgb.document.matrix, nthread=3, nround =xgb.grid[i,\PYZsq{}nround\PYZsq{}], max.depth=xgb.grid[i,\PYZsq{}max.depth\PYZsq{}], eta=xgb.grid[i,\PYZsq{}eta\PYZsq{}], objective = \PYZdq{}multi:softmax\PYZdq{}, verbose = 0,num\PYZus{}class=20)
+           xgb.model.predicted.cuisine \PYZlt{}\PYZhy{} predict(model.xgb.train,as.matrix(validating.subset.DTM[!names(validating.subset.DTM) \PYZpc{}in\PYZpc{} \PYZdq{}cuisine\PYZdq{}]))
+           xgb.model.predicted.cuisine \PYZlt{}\PYZhy{} factor(xgb.model.predicted.cuisine,labels=levels(training.subset.DTM\PYZdl{}cuisine))
+           xgb.confusion.matrix \PYZlt{}\PYZhy{} confusionMatrix(xgb.model.predicted.cuisine,validating.subset.DTM\PYZdl{}cuisine)
+           print(format(list(nthread=3, nround =xgb.grid[i,\PYZsq{}nround\PYZsq{}], max.depth=xgb.grid[i,\PYZsq{}max.depth\PYZsq{}], eta=xgb.grid[i,\PYZsq{}eta\PYZsq{}],accuracy = xgb.confusion.matrix\PYZdl{}overall[1])))
+         \PYZcb{}
+\end{Verbatim}
+
+    
+    \begin{verbatim}
+Loading required package: xgboost
+    nthread      nround   max.depth         eta    accuracy 
+        "3"        "25"        "10"       "0.4" "0.7306629" 
+    nthread      nround   max.depth         eta    accuracy 
+        "3"        "50"        "10"       "0.4" "0.7375346" 
+    nthread      nround   max.depth         eta    accuracy 
+        "3"       "100"        "10"       "0.4" "0.7433169" 
+    nthread      nround   max.depth         eta    accuracy 
+        "3"        "25"        "25"       "0.4" "0.7299087" 
+    nthread      nround   max.depth         eta    accuracy 
+        "3"        "50"        "25"       "0.4" "0.7361099" 
+    nthread      nround   max.depth         eta    accuracy 
+        "3"       "100"        "25"       "0.4" "0.7403838" 
+    nthread      nround   max.depth         eta    accuracy 
+        "3"        "25"        "10"       "0.6" "0.7196849" 
+    nthread      nround   max.depth         eta    accuracy 
+        "3"        "50"        "10"       "0.6" "0.7288192" 
+    nthread      nround   max.depth         eta    accuracy 
+        "3"       "100"        "10"       "0.6" "0.7309981" 
+   nthread     nround  max.depth        eta   accuracy 
+       "3"       "25"       "25"      "0.6" "0.722618" 
+    nthread      nround   max.depth         eta    accuracy 
+        "3"        "50"        "25"       "0.6" "0.7291544" 
+    nthread      nround   max.depth         eta    accuracy 
+        "3"       "100"        "25"       "0.6" "0.7328417" 
+
+    \end{verbatim}
+
+    
+    \paragraph{\texorpdfstring{\emph{Test the best model given by the cross
+validation
+results}}{Test the best model given by the cross validation results}}\label{test-the-best-model-given-by-the-cross-validation-results}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}36}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{R}
+         xgb.document.matrix \PYZlt{}\PYZhy{} xgb.DMatrix(as.matrix(training.ingredients.DTM[!names(training.ingredients.DTM) \PYZpc{}in\PYZpc{} \PYZdq{}cuisine\PYZdq{}]),label=as.numeric(training.ingredients.DTM\PYZdl{}cuisine)\PYZhy{}1)
+         model.xgb.train \PYZlt{}\PYZhy{} xgboost(data = xgb.document.matrix, nthread=3, nround = 100, max.depth = 10, eta=0.4, objective = \PYZdq{}multi:softmax\PYZdq{}, verbose = 0,num\PYZus{}class=20)
+         xgb.model.predicted.cuisine \PYZlt{}\PYZhy{} predict(model.xgb.train,as.matrix(testing.ingredients.DTM[!names(testing.ingredients.DTM) \PYZpc{}in\PYZpc{} \PYZdq{}cuisine\PYZdq{}]))
+         xgb.model.predicted.cuisine \PYZlt{}\PYZhy{} factor(xgb.model.predicted.cuisine,labels=levels(training.ingredients.DTM\PYZdl{}cuisine))
+         xgb.model.output.data \PYZlt{}\PYZhy{} as.data.frame(cbind(test.data\PYZdl{}id,as.character(xgb.model.predicted.cuisine)))
+         colnames(xgb.model.output.data) \PYZlt{}\PYZhy{} c(\PYZdq{}id\PYZdq{}, \PYZdq{}cuisine\PYZdq{})
+         write.table(format(xgb.model.output.data, scientific=FALSE), file = \PYZdq{}../../Submissions/xgb\PYZus{}submission.csv\PYZdq{}, sep=\PYZdq{},\PYZdq{},quote = F, row.names=F)
+         \PYZsh{} 0.74537 Kaggle Score
+\end{Verbatim}
+
+    \subsection{Part 5: Conclusions}\label{part-5-conclusions}
+
+    \paragraph{\texorpdfstring{1. The figure in Part 2 (d) helps us to
+conclude that along with \textbf{`Salt'}, few of the other common
+ingredients present in most of the recipies
+include:}{1. The figure in Part 2 (d) helps us to conclude that along with Salt, few of the other common ingredients present in most of the recipies include:}}\label{the-figure-in-part-2-d-helps-us-to-conclude-that-along-with-salt-few-of-the-other-common-ingredients-present-in-most-of-the-recipies-include}
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Onions}
+\item
+  \emph{Olive Oil}
+\item
+  \emph{Water}
+\item
+  \emph{Garlic}
+\item
+  \emph{Sugar}
+\end{itemize}
+
+\paragraph{2. Part 2 (e) helps us to identify major distinguishing
+ingredients in most of the cuisines.
+Eg.:}\label{part-2-e-helps-us-to-identify-major-distinguishing-ingredients-in-most-of-the-cuisines.-eg.}
+
+\begin{itemize}
+\tightlist
+\item
+  In \textbf{`Thai'} \& \textbf{`Vietnamese'} dishes, the most common
+  ingredient is \textbf{`Fish Sauce'}.
+\item
+  In \textbf{`Korean'}, \textbf{`Chinese'} and \textbf{`Japanese'}
+  dishes, \textbf{`Soy Sauce'} is the most commmon ingredient
+\item
+  \textbf{`Garam Masala'} is one of the most distinguishing ingredients
+  used in \textbf{`Indian'} recipies.
+\item
+  \textbf{`Mirin'} is one of the most distinguishing ingredients used in
+  \textbf{`Japanese'} recipies
+\item
+  \textbf{`Cheese'} is among the top in the most commonly used
+  ingredient in \textbf{`Italian'} dishes.
+\item
+  \textbf{`All Purpose Flour'} is very commmon in most European cuisines
+  like \textbf{`British'}, \textbf{`French'}, \textbf{`Irish'}.
+\item
+  \textbf{`Southern US'} cuisines have \textbf{Flour, Eggs, Baking
+  powder, Sugar, Butter} as their most common ingredients.
+\end{itemize}
+
+\paragraph{3. The following models were created for classifying recipies
+into
+cuisines:}\label{the-following-models-were-created-for-classifying-recipies-into-cuisines}
+
+\begin{itemize}
+\tightlist
+\item
+  Bayesian Models (Multinomial Naive Bayes and Bernoulli Naive Bayes),
+  in Python
+\item
+  Boosting Models (Adaboost, Random Forests, Extra Trees), in Python
+\item
+  Tree Based and Boosting Models (CART and Extreme Gradient Boosting),
+  in R
+\end{itemize}
+
+\paragraph{The Bayesian Classifiers took in as input sparse ingredient
+matrices, while all others took in as input dense ingredient matrices.
+The Models which took in dense matrices gave us better results, at a
+cost of added training/testing time. Hence, while sparse matrices help
+us speeding up the classification process, it does so at the cost of
+reducing the accuracy of the classification (in this particular
+case).}\label{the-bayesian-classifiers-took-in-as-input-sparse-ingredient-matrices-while-all-others-took-in-as-input-dense-ingredient-matrices.-the-models-which-took-in-dense-matrices-gave-us-better-results-at-a-cost-of-added-trainingtesting-time.-hence-while-sparse-matrices-help-us-speeding-up-the-classification-process-it-does-so-at-the-cost-of-reducing-the-accuracy-of-the-classification-in-this-particular-case.}
+
+\paragraph{4. While the Bayesian models gave approximately equal
+accuracies of \textasciitilde{}0.65, the Boosting Models gave much
+better results as would have been expected. However, the AdaBoost
+Classifier gives us a maximum accuracy of around \textasciitilde{}.65
+(which is marginally better than the Bernoulli Naive Bayes
+Classifier).}\label{while-the-bayesian-models-gave-approximately-equal-accuracies-of-0.65-the-boosting-models-gave-much-better-results-as-would-have-been-expected.-however-the-adaboost-classifier-gives-us-a-maximum-accuracy-of-around-.65-which-is-marginally-better-than-the-bernoulli-naive-bayes-classifier.}
+
+\paragraph{5. The Random Forest Classifier, Extra Trees Classifier and
+the Extreme Gradient Boosting Classifier (in R) gave the best results,
+as seen by the following Kaggle
+Scores:}\label{the-random-forest-classifier-extra-trees-classifier-and-the-extreme-gradient-boosting-classifier-in-r-gave-the-best-results-as-seen-by-the-following-kaggle-scores}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\emph{Extra Trees:}} \textbf{0.7575}
+\item
+  \textbf{\emph{Extreme Gradient Boosting:}} \textbf{0.7454}
+\item
+  \textbf{\emph{Random Forest:}} \textbf{0.7399}
+\end{itemize}
+
+\paragraph{6. What else can be done???}\label{what-else-can-be-done}
+
+\begin{itemize}
+\tightlist
+\item
+  We now have an idea of which ingredient is more commonly used in which
+  particular cuisine. Hence, while deciding the optimum location of
+  opening a new restaurant with a particular cuisine in mind, these
+  points can be taken into consideration.
+\item
+  Also, many competitions like the famous MasterChef TV series require
+  us to create a dish using a Mystery Box of ingredients. An effective
+  an accurate model like this can help amateur chefs in deciding which
+  particular cuisine can be created using a limited set of ingredients.
+\end{itemize}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
