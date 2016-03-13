@@ -1,2 +1,5 @@
 # cuisine_classification
-Kaggle competition (What's Cooking?)
+
+If you're in Northern California, you'll be walking past the inevitable bushels of leafy greens, spiked with dark purple kale and the bright pinks and yellows of chard. Across the world in South Korea, mounds of bright red kimchi greet you, while the smell of the sea draws your attention to squids squirming nearby. India’s market is perhaps the most colorful, awash in the rich hues and aromas of dozens of spices: turmeric, star anise, poppy seeds, and garam masala as far as the eye can see.
+Some of the strongest geographic and cultural associations are tied to a region's local foods. This project deals with predicting the category of a dish's cuisine given a list of its ingredients. As seen in any document classification prediction algorithm, this ‘what’s cooking?’ project has been broken down to obtain a ‘bag-of-ingredients’ model, on the lines of the ‘bag-of-words’ model.
+This problem statement has many utilities like finding the most common ingredients in a dish generally as per cuisine, finding which possible restaurant to open nearby as per the local ingredients in that market, etc.
